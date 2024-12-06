@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Editar Avión</h1>
+  <form method="POST" action="{% url 'editarAvion' avion.Id_Avion %}">
+    {% csrf_token %}
+    
+    <!-- Campo para el ID del avión (solo lectura) -->
+    <div class="form-group">
+      <label for="txtId_Avion">ID del Avión</label>
+      <input type="text" name="txtId_Avion" value="{{ avion.Id_Avion }}" class="form-control" readonly>
+    </div>
+    
+    <!-- Campo para el modelo -->
+    <div class="form-group">
+      <label for="txtModelo">Modelo</label>
+      <input type="text" name="txtModelo" value="{{ avion.Modelo }}" class="form-control" required>
+    </div>
+    
+    <!-- Campo para la aerolínea -->
+    <div class="form-group">
+      <label for="txtAerolinea">Aerolínea</label>
+      <input type="text" name="txtAerolinea" value="{{ avion.Aerolinea }}" class="form-control" required>
+    </div>
+    
+    <!-- Campo para la capacidad de asientos -->
+    <div class="form-group">
+      <label for="numCapacidad_Asientos">Capacidad de Asientos</label>
+      <input type="number" name="numCapacidad_Asientos" value="{{ avion.Capacidad_Asientos }}" class="form-control" required>
+    </div>
+    
+    <!-- Campo para la capacidad de carga -->
+    <div class="form-group">
+      <label for="numCapacidad_Carga">Capacidad de Carga</label>
+      <input type="number" name="numCapacidad_Carga" value="{{ avion.Capacidad_Carga }}" class="form-control" required>
+    </div>
+    
+    <!-- Campo para el año de fabricación -->
+    <div class="form-group">
+      <label for="txtAño_Fabricacion">Año de Fabricación</label>
+      <input type="text" name="txtAño_Fabricacion" value="{{ avion.Año_Fabricacion }}" class="form-control" required>
+    </div>
+    
+    <!-- Campo para el estado del avión -->
+    <div class="form-group">
+      <label for="txtEstado_Avion">Estado del Avión</label>
+      <input type="text" name="txtEstado_Avion" value="{{ avion.Estado_Avion }}" class="form-control" required>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      <a href="{% url 'Avion' %}" class="btn btn-secondary ml-2">Cancelar</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
