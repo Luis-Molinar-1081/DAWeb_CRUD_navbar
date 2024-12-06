@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Editar Reserva</h1>
+  <form method="POST" action="{% url 'editarReserva' reserva.Id_Reserva %}">
+    {% csrf_token %}
+    
+    <!-- Campo para el ID del Pasajero -->
+    <div class="form-group">
+      <label for="txtId_pasajero">ID del Pasajero</label>
+      <input type="text" name="txtId_pasajero" value="{{ reserva.Id_pasajero }}" class="form-control" placeholder="Id del Pasajero" required>
+    </div>
+    
+    <!-- Campo para el ID del Vuelo -->
+    <div class="form-group">
+      <label for="txtId_vuelo">ID del Vuelo</label>
+      <input type="text" name="txtId_vuelo" value="{{ reserva.Id_vuelo }}" class="form-control" placeholder="Id del Vuelo" required>
+    </div>
+    
+    <!-- Campo para la Fecha de Reserva -->
+    <div class="form-group">
+      <label for="txtFecha_Reserva">Fecha de Reserva</label>
+      <input type="date" id="txtFecha_Reserva" name="txtFecha_Reserva" class="form-control" value="{{ reserva.Fecha_Reserva|date:'Y-m-d' }}" required>
+    </div>
+    
+    <!-- Campo para el Estado de Reserva -->
+    <div class="form-group">
+      <label for="txtEstado_reserva">Estado de la Reserva</label>
+      <input type="text" name="txtEstado_reserva" value="{{ reserva.Estado_reserva }}" class="form-control" placeholder="Estado de la Reserva" required>
+    </div>
+    
+    <!-- Campo para la Clase de Servicio -->
+    <div class="form-group">
+      <label for="txtClase_Servicio">Clase de Servicio</label>
+      <input type="text" name="txtClase_Servicio" value="{{ reserva.Clase_Servicio }}" class="form-control" placeholder="Clase de Servicio" required>
+    </div>
+    
+    <!-- Campo para el Número de Reserva -->
+    <div class="form-group">
+      <label for="txtNumero_Reserva">Número de Reserva</label>
+      <input type="text" name="txtNumero_Reserva" value="{{ reserva.Numero_Reserva }}" class="form-control" placeholder="Número de Reserva" required>
+    </div>
+    
+    <!-- Botón para guardar los cambios -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      <a href="{% url 'Reserva' %}" class="btn btn-secondary ml-2">Cancelar</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
